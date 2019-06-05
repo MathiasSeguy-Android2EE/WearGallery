@@ -107,6 +107,7 @@ public class MainActivity extends Activity {
 		return builder;
 	}
 
+	@Deprecated
 	private void showNotification(int id, Notification notif) {
 		NotificationManagerCompat notifManager = NotificationManagerCompat.from(this);
 		notifManager.notify(id, notif);
@@ -124,6 +125,7 @@ public class MainActivity extends Activity {
 		showCeline();
 		showBasile();
 		showCeleste();
+		showLila();
 		// Group summary
 		// Not displayed on the wearable
 		NotificationCompat.Builder builderGroup = buildCoreNotification();
@@ -175,6 +177,24 @@ public class MainActivity extends Activity {
 				.BigPictureStyle(builderP2)
 						.bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.basile));
 		showNotification(R.string.hello_world + 2, builderBigPicture2.build());
+	}
+	/**
+	 *
+	 */
+	private void showLila() {
+		// third notification page (because of the B)
+		// Not displayed on the phone
+		NotificationCompat.Builder builderP2 = buildCoreNotification();
+		builderP2
+				.setContentTitle("Lila")
+				// add an action
+				.addAction(new NotificationCompat.Action(R.drawable.ic_notif_small_icon, "Action", pdIntentLove))
+				.setGroup("MyLove")
+				.setSortKey("C");
+		NotificationCompat.BigPictureStyle builderBigPicture2 = new NotificationCompat
+				.BigPictureStyle(builderP2)
+				.bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.lila));
+		showNotification(R.string.hello_world + 3, builderBigPicture2.build());
 	}
 
 	/**
